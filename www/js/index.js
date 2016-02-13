@@ -35,9 +35,10 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         alert("On DeviceReady");
+        PushbotsPlugin.initializeAndroid("56be37e0177959e76e8b4568", "633137522062");
+        alert("Device is Android");
         if(PushbotsPlugin.isAndroid()){
-            PushbotsPlugin.initializeAndroid("56be37e0177959e76e8b4568", "633137522062");
-            alert("Device is Android");
+
         }
 
         if(PushbotsPlugin.isiOS()){
