@@ -44,6 +44,14 @@
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/pushbots.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('deviceready', function () {
+                alert("deviceready Triggered");
+                var Pushbots = PushbotsPlugin.initialize("56be37e0177959e76e8b4568", {"android":{"sender_id":"633137522062"}});
+            }, false);
+                alert("deviceready Ended");
+        </script>
     </body>
 </html>

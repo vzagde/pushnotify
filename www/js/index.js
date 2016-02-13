@@ -29,34 +29,12 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
-    //
+
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
+
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        alert("On DeviceReady");
-        var Pushbots = PushbotsPlugin.initialize("56be37e0177959e76e8b4568", {"android":{"sender_id":"633137522062"}});}, false);
-
-        // Should be called once app receive the notification
-        Pushbots.on("notification:received", function(data){
-            console.log("received:" + JSON.stringify(data));
-        });
-
-        // Should be called once the notification is clicked
-        // **important** Doesn't work with iOS while app is closed
-        Pushbots.on("notification:clicked", function(data){
-            console.log("clicked:" + JSON.stringify(data));
-        });
-
-        // Should be called once the device is registered successfully with Apple or Google servers
-        Pushbots.on("registered", function(token){
-            console.log(token);
-        });
-
-        Pushbots.getRegistrationId(function(token){
-            console.log("Registration Id:" + token);
-        });
-        alert("End of function DeviceReady");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
