@@ -34,7 +34,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-
         alert("On DeviceReady");
         if(PushbotsPlugin.isAndroid()){
             PushbotsPlugin.initializeAndroid("56be37e0177959e76e8b4568", "633137522062");
@@ -80,6 +79,7 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+
 };
 
 app.initialize();
