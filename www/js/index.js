@@ -35,15 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         alert("On DeviceReady");
-        PushbotsPlugin.initializeAndroid("56be37e0177959e76e8b4568", "633137522062");
-        alert("Device is Android");
-        if(PushbotsPlugin.isAndroid()){
-
-        }
-
-        if(PushbotsPlugin.isiOS()){
-            PushbotsPlugin.initializeiOS("56be37e0177959e76e8b4568");
-        }
+        var Pushbots = PushbotsPlugin.initialize("56be37e0177959e76e8b4568", {"android":{"sender_id":"633137522062"}});}, false);
 
         // Should be called once app receive the notification
         Pushbots.on("notification:received", function(data){
@@ -52,22 +44,19 @@ var app = {
 
         // Should be called once the notification is clicked
         // **important** Doesn't work with iOS while app is closed
-        function myMsgClickHandler(msg){
-            console.log("Clicked On notification" + JSON.stringify(msg));
-            alert(JSON.stringify(msg));
-        }
-        PushbotsPlugin.onNotificationClick(myMsgClickHandler);
+        Pushbots.on("notification:clicked", function(data){
+            console.log("clicked:" + JSON.stringify(data));
+        });
 
         // Should be called once the device is registered successfully with Apple or Google servers
         Pushbots.on("registered", function(token){
             console.log(token);
-            alert("registered :"+token);
         });
 
         Pushbots.getRegistrationId(function(token){
             console.log("Registration Id:" + token);
-            alert("Registration Id :"+token);
         });
+        alert("End of function DeviceReady");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
